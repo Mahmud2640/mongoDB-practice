@@ -15,3 +15,7 @@ export interface IUser {
   presentAddress: string;
   permarentAddress: string;
 }
+
+interface IUserMethods {
+  getFullName(): string;
+}
