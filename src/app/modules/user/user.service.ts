@@ -3,8 +3,9 @@ import User from "./user.model";
 
 export const createUserToDB = async (payload: IUser): Promise<IUser> => {
   const user = await new User(payload);
-
   await user.save();
+  console.log(user.fullName());
+
   return user;
 };
 
@@ -18,4 +19,9 @@ export const getUserByIdFromDB = async (
 ): Promise<IUser | null> => {
   const user = await User.findOne({ id: payload }, { name: 1 });
   return user;
+};
+
+export const getAllAdminUserFromDB = async () => {
+  const admins = await User.getAdminUsers();
+  return admins;
 };
